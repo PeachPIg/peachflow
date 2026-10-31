@@ -1,5 +1,5 @@
 /* PeachFlow 3.2: offline static shell. Never cache cross-origin data / API credentials. */
-const CACHE='peachflow-v3.3-shell-20261031';
+const CACHE='peachflow-v3.3.1-shell-20261031';
 const SHELL=['./','./index.html','./manifest.json','./icons/peach-192.png','./icons/peach-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('peachflow-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
